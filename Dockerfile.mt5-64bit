@@ -1,17 +1,3 @@
-# Run MetaTrader in a container.
-#
-# Copyright (c) 2022 tick <tickelton@gmail.com>
-#
-# SPDX-License-Identifier:     ISC
-#
-# docker run \
-#	--net host \
-#	-v /tmp/.X11-unix:/tmp/.X11-unix \
-#	-e DISPLAY \
-#	-v $METATRADER_HOST_PATH:/MetaTrader \
-#	--name mt \
-#	tickelton/mt
-
 # Base docker image.
 FROM ubuntu:focal
 
@@ -32,7 +18,6 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* /winehq.key
 
 # Add wine user.
-# NOTE: You might need to change the UID/GID so the
 # wine user has write access to your MetaTrader
 # directory at $METATRADER_HOST_PATH.
 RUN groupadd -g 1000 wine \
